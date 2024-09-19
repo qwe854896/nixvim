@@ -32,7 +32,7 @@ If you add a new configuration file, remember to add it to the
 <details>
     <summary>List of plugins</summary>
 
-- **[colorscheme/](../config/plug/colorscheme):** Theme configuration. Current one is [paradise](https://github.com/paradise-theme/paradise)
+- **[colorscheme/](../config/plug/colorscheme):** Theme configuration. Current one is [tokyo-night](https://github.com/tokyo-night/tokyo-night-vscode-theme)
 - **[completion/](../config/plug/completion)**
   - **[codecompanion](../config/plug/completion/codecompanion.nix):** Zed AI like
   - **[copilot-cmp](../config/plug/completion/copilot-cmp.nix):** Completion support for GitHub copilot
