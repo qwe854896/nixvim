@@ -1,5 +1,44 @@
 { lib, ... }:
 {
+  keymaps = [
+    {
+      mode = "n";
+      key = "<leader>xx";
+      action = lib.nixvim.mkRaw "function() vim.diagnostic.open_float() end";
+      options = {
+        desc = "Line diagnostics";
+        silent = true;
+      };
+    }
+    {
+      mode = "n";
+      key = "<leader>xq";
+      action = lib.nixvim.mkRaw "function() vim.diagnostic.setloclist() end";
+      options = {
+        desc = "Diagnostics list";
+        silent = true;
+      };
+    }
+    {
+      mode = "n";
+      key = "[d";
+      action = lib.nixvim.mkRaw "function() vim.diagnostic.jump({ count = -1, float = true }) end";
+      options = {
+        desc = "Previous diagnostic";
+        silent = true;
+      };
+    }
+    {
+      mode = "n";
+      key = "]d";
+      action = lib.nixvim.mkRaw "function() vim.diagnostic.jump({ count = 1, float = true }) end";
+      options = {
+        desc = "Next diagnostic";
+        silent = true;
+      };
+    }
+  ];
+
   diagnostic.settings = {
     severity_sort = true;
     update_in_insert = false;
@@ -30,17 +69,6 @@
 
     keymaps = {
       silent = true;
-
-      diagnostic = {
-        "<leader>xx" = {
-          action = "open_float";
-          desc = "Line diagnostics";
-        };
-        "<leader>xq" = {
-          action = "setloclist";
-          desc = "Diagnostics list";
-        };
-      };
 
       lspBuf = {
         "gd" = {
@@ -76,19 +104,6 @@
           desc = "Rename symbol";
         };
       };
-
-      extra = [
-        {
-          key = "[d";
-          action = lib.nixvim.mkRaw "function() vim.diagnostic.jump({ count = -1, float = true }) end";
-          options.desc = "Previous diagnostic";
-        }
-        {
-          key = "]d";
-          action = lib.nixvim.mkRaw "function() vim.diagnostic.jump({ count = 1, float = true }) end";
-          options.desc = "Next diagnostic";
-        }
-      ];
     };
 
     onAttach = ''
