@@ -9,7 +9,7 @@
   ];
 
   extraConfigLuaPost = ''
-    local user_lua_dir = vim.fn.stdpath("config") .. "/lua"
+    local user_lua_dir = vim.fn.expand("~/.config/nixvim/lua")
     local user_lua_files = vim.fn.globpath(user_lua_dir, "*.lua", false, true)
 
     table.sort(user_lua_files)

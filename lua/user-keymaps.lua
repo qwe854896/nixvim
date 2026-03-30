@@ -3,5 +3,5 @@
 
 -- Example: open the config directory quickly.
 -- vim.keymap.set("n", "<leader>fn", function()
---   vim.cmd.edit(vim.fn.stdpath("config"))
+--   vim.cmd.edit(vim.fn.expand("~/.config/nixvim"))
 -- end, { desc = "Open nixvim config" })
