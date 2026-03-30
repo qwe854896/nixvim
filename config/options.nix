@@ -14,6 +14,15 @@
     softtabstop = 2;
     expandtab = true;
 
+    ignorecase = true;
+    smartcase = true;
+    hlsearch = true;
+    incsearch = true;
+
+    signcolumn = "yes";
+    cursorline = true;
+    termguicolors = true;
+
     splitright = true;
     splitbelow = true;
 
@@ -24,4 +33,6 @@
   };
 
   clipboard.register = "unnamedplus";
+  clipboard.providers."wl-copy".enable = true;
+  clipboard.providers.xclip.enable = true;
 }
