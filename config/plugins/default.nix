@@ -4,6 +4,7 @@
     ./completion
     ./editor
     ./lsp
+    ./navigation
     ./ui
   ];
 }
