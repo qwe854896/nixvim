@@ -15,7 +15,8 @@
     lintersByFt = {
       nix = [ "deadnix" "statix" ];
       python = [ "ruff" ];
-      bash = [ "bash" "shellcheck" ];
+      sh = [ "shellcheck" ];
+      bash = [ "shellcheck" ];
       zsh = [ "shellcheck" ];
     };
   };
