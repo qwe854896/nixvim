@@ -106,12 +106,5 @@
       };
     };
 
-    onAttach = ''
-      if client:supports_method("textDocument/inlayHint") then
-        vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-      end
-    '';
-
-    inlayHints = true;
   };
 }
