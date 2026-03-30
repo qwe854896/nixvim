@@ -9,7 +9,13 @@
       statuscolumn.enabled = false;
       words.enabled = false;
 
-      dashboard.enabled = true;
+      dashboard = {
+        enabled = true;
+        sections = [
+          { section = "header"; }
+          { section = "keys"; }
+        ];
+      };
       notifier = {
         enabled = true;
         timeout = 3000;

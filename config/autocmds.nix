@@ -15,7 +15,7 @@
       desc = "Highlight when yanking text";
       callback = lib.nixvim.mkRaw ''
         function()
-          vim.highlight.on_yank()
+          vim.hl.on_yank()
         end
       '';
     }

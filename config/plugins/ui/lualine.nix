@@ -6,7 +6,7 @@
     settings = {
       options = {
         globalstatus = true;
-        theme = "catppuccin";
+        theme = "auto";
       };
 
       sections = {
