@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ ... }:
 {
   plugins.blink-cmp = {
     enable = true;
@@ -70,11 +70,7 @@
 
       signature.enabled = true;
 
-      snippets = {
-        expand = lib.nixvim.mkRaw ''function(snippet) require("luasnip").lsp_expand(snippet) end'';
-        active = lib.nixvim.mkRaw ''function(filter) return require("luasnip").in_snippet() end'';
-        jump = lib.nixvim.mkRaw ''function(direction) require("luasnip").jump(direction) end'';
-      };
+      snippets.preset = "luasnip";
 
       sources = {
         default = [
