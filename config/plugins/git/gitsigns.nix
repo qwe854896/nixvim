@@ -1,66 +1,29 @@
 { lib, ... }:
 {
-  keymaps = [
-    {
-      mode = "n";
-      key = "]h";
-      action = lib.nixvim.mkRaw "function() require('gitsigns').nav_hunk('next') end";
-      options = {
-        desc = "Next hunk";
-        silent = true;
-      };
-    }
-    {
-      mode = "n";
-      key = "[h";
-      action = lib.nixvim.mkRaw "function() require('gitsigns').nav_hunk('prev') end";
-      options = {
-        desc = "Previous hunk";
-        silent = true;
-      };
-    }
-    {
-      mode = "n";
-      key = "<leader>ghs";
-      action = lib.nixvim.mkRaw "function() require('gitsigns').stage_hunk() end";
-      options = {
-        desc = "Stage hunk";
-        silent = true;
-      };
-    }
-    {
-      mode = "n";
-      key = "<leader>ghr";
-      action = lib.nixvim.mkRaw "function() require('gitsigns').reset_hunk() end";
-      options = {
-        desc = "Reset hunk";
-        silent = true;
-      };
-    }
-    {
-      mode = "n";
-      key = "<leader>ghp";
-      action = lib.nixvim.mkRaw "function() require('gitsigns').preview_hunk() end";
-      options = {
-        desc = "Preview hunk";
-        silent = true;
-      };
-    }
-    {
-      mode = "n";
-      key = "<leader>ghb";
-      action = lib.nixvim.mkRaw "function() require('gitsigns').blame_line() end";
-      options = {
-        desc = "Blame line";
-        silent = true;
-      };
-    }
-  ];
-
   plugins.gitsigns = {
     enable = true;
 
     settings = {
+      on_attach = lib.nixvim.mkRaw ''
+        function(bufnr)
+          local gitsigns = require('gitsigns')
+          local opts = { buffer = bufnr, silent = true }
+
+          vim.keymap.set('n', ']h', function()
+            gitsigns.nav_hunk('next')
+          end, vim.tbl_extend('force', opts, { desc = 'Next hunk' }))
+
+          vim.keymap.set('n', '[h', function()
+            gitsigns.nav_hunk('prev')
+          end, vim.tbl_extend('force', opts, { desc = 'Previous hunk' }))
+
+          vim.keymap.set('n', '<leader>ghs', gitsigns.stage_hunk, vim.tbl_extend('force', opts, { desc = 'Stage hunk' }))
+          vim.keymap.set('n', '<leader>ghr', gitsigns.reset_hunk, vim.tbl_extend('force', opts, { desc = 'Reset hunk' }))
+          vim.keymap.set('n', '<leader>ghp', gitsigns.preview_hunk, vim.tbl_extend('force', opts, { desc = 'Preview hunk' }))
+          vim.keymap.set('n', '<leader>ghb', gitsigns.blame_line, vim.tbl_extend('force', opts, { desc = 'Blame line' }))
+        end
+      '';
+
       signs = {
         add.text = "+";
         change.text = "~";
