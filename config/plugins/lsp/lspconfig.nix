@@ -12,15 +12,6 @@
     }
     {
       mode = "n";
-      key = "<leader>xq";
-      action = lib.nixvim.mkRaw "function() vim.diagnostic.setloclist() end";
-      options = {
-        desc = "Diagnostics list";
-        silent = true;
-      };
-    }
-    {
-      mode = "n";
       key = "[d";
       action = lib.nixvim.mkRaw "function() vim.diagnostic.jump({ count = -1, float = true }) end";
       options = {

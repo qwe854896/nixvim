@@ -7,5 +7,6 @@
     ./lsp
     ./navigation
     ./ui
+    ./utils
   ];
 }
