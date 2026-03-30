@@ -1,5 +1,12 @@
-{ lib, ... }:
+{ pkgs, lib, ... }:
 {
+  extraPackages = with pkgs; [
+    deadnix
+    statix
+    ruff
+    shellcheck
+  ];
+
   plugins.lint = {
     enable = true;
 

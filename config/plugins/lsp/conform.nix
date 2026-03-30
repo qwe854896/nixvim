@@ -1,7 +1,8 @@
-{ ... }:
+{ lib, ... }:
 {
   plugins.conform-nvim = {
     enable = true;
+    autoInstall.enable = true;
 
     settings = {
       formatters_by_ft = {
@@ -26,4 +27,16 @@
       notify_no_formatters = false;
     };
   };
+
+  keymaps = [
+    {
+      mode = "n";
+      key = "<leader>lf";
+      action = lib.nixvim.mkRaw "function() require(\"conform\").format({ async = true, lsp_format = \"fallback\" }) end";
+      options = {
+        desc = "Format buffer";
+        silent = true;
+      };
+    }
+  ];
 }

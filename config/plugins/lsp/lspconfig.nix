@@ -88,11 +88,6 @@
           action = lib.nixvim.mkRaw "function() vim.diagnostic.jump({ count = 1, float = true }) end";
           options.desc = "Next diagnostic";
         }
-        {
-          key = "<leader>lf";
-          action = lib.nixvim.mkRaw "function() require(\"conform\").format({ async = true, lsp_format = \"fallback\" }) end";
-          options.desc = "Format buffer";
-        }
       ];
     };
 
