@@ -2,6 +2,7 @@
 {
   imports = [
     ./editor
+    ./lsp
     ./ui
   ];
 }
