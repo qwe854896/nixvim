@@ -26,6 +26,10 @@
             module = import ./config;
           };
           nvim = nixvim.legacyPackages.${system}.makeNixvimWithModule nixvimModule;
+          nvimApp = {
+            type = "app";
+            program = "${nvim}/bin/nvim";
+          };
         in
         {
           formatter = pkgs.nixfmt-tree;
@@ -37,7 +41,14 @@
             ];
           };
           packages.default = nvim;
+          apps.default = nvimApp;
+          apps.nvim = nvimApp;
           checks.default = nixvimLib.check.mkTestDerivationFromNixvimModule nixvimModule;
         };
+
+      flake.templates.default = {
+        path = ./templates/minimal;
+        description = "Minimal standalone Nixvim starter";
+      };
     };
 }
