@@ -4,7 +4,7 @@ A standalone Neovim flake built with [Nixvim](https://github.com/nix-community/n
 
 ## Quick Start
 
-This flake currently targets `x86_64-linux` only.
+Supported systems: `x86_64-linux`, `aarch64-linux`, `x86_64-darwin`, and `aarch64-darwin`.
 
 ```bash
 nix run github:qwe854896/nixvim
@@ -70,7 +70,7 @@ nix profile install github:qwe854896/nixvim
 
   outputs = inputs@{ nixpkgs, ... }:
     let
-      system = "x86_64-linux";
+      system = "x86_64-linux"; # or aarch64-linux, x86_64-darwin, aarch64-darwin
       pkgs = import nixpkgs { inherit system; };
     in
     {
@@ -87,6 +87,8 @@ nix profile install github:qwe854896/nixvim
 ```bash
 nix flake init -t github:qwe854896/nixvim
 ```
+
+The main flake and the exported template support the same four systems.
 
 The exported template is intentionally minimal and does not include this repo's `~/.config/nixvim/lua/*.lua` runtime override loader by default.
 

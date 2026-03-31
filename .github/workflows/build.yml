@@ -10,9 +10,24 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    name: Build (${{ matrix.nix-system }})
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: ubuntu-24.04
+            nix-system: x86_64-linux
+          - runner: ubuntu-24.04-arm
+            nix-system: aarch64-linux
+          - runner: macos-15-intel
+            nix-system: x86_64-darwin
+          - runner: macos-15
+            nix-system: aarch64-darwin
+    runs-on: ${{ matrix.runner }}
     steps:
       - uses: actions/checkout@v4
       - uses: DeterminateSystems/nix-installer-action@v22
       - uses: DeterminateSystems/magic-nix-cache-action@v13
+      - name: Assert runner matches target system
+        run: test "$(nix eval --impure --raw --expr builtins.currentSystem)" = "${{ matrix.nix-system }}"
       - run: nix build .
