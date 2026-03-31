@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   imports = [
     ./catppuccin.nix
     ./lualine.nix

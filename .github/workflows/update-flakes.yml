@@ -1,0 +1,38 @@
+name: Update Flakes
+
+on:
+  schedule:
+    - cron: '0 0 * * 1'
+  workflow_dispatch:
+
+concurrency:
+  group: update-flakes
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-flakes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/nix-installer-action@v22
+      - uses: DeterminateSystems/magic-nix-cache-action@v13
+      - run: nix flake update
+      - env:
+          REPO_TOKEN: ${{ secrets.REPO_TOKEN }}
+        run: |
+          if [ -z "$REPO_TOKEN" ]; then
+            printf '%s\n' 'REPO_TOKEN secret is required for update-flakes PR creation.' >&2
+            exit 1
+          fi
+      - uses: peter-evans/create-pull-request@v8.1.0
+        with:
+          token: ${{ secrets.REPO_TOKEN }}
+          add-paths: flake.lock
+          branch: chore/update-flake-inputs
+          commit-message: 'chore: update flake inputs'
+          title: 'chore: update flake inputs'
+          assignees: qwe854896

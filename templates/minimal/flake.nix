@@ -11,7 +11,7 @@
   };
 
   outputs =
-    { nixpkgs, nixvim, ... }:
+    { nixvim, ... }:
     let
       system = "x86_64-linux";
       nvim = nixvim.legacyPackages.${system}.makeNixvimWithModule {

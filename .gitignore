@@ -1,3 +1,4 @@
 .worktrees/
 result
 .direnv
+/session-*.md

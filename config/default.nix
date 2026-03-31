@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   imports = [
     ./languages
     ./options.nix
