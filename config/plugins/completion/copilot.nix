@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   plugins = {
     blink-cmp-copilot.enable = true;
 

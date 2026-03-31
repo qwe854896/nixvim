@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   plugins.trouble.enable = true;
 
   keymaps = [

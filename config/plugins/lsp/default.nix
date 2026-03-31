@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   imports = [
     ./lspconfig.nix
     ./conform.nix
