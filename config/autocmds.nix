@@ -1,11 +1,21 @@
 { lib, ... }:
 {
   autoGroups = {
-    yank_highlight = { clear = true; };
-    trim_trailing_whitespace = { clear = true; };
-    restore_cursor_position = { clear = true; };
-    resize_splits = { clear = true; };
-    filetype_indent = { clear = true; };
+    yank_highlight = {
+      clear = true;
+    };
+    trim_trailing_whitespace = {
+      clear = true;
+    };
+    restore_cursor_position = {
+      clear = true;
+    };
+    resize_splits = {
+      clear = true;
+    };
+    filetype_indent = {
+      clear = true;
+    };
   };
 
   autoCmd = [
@@ -55,7 +65,11 @@
     {
       event = "FileType";
       group = "filetype_indent";
-      pattern = [ "python" "c" "zig" ];
+      pattern = [
+        "python"
+        "c"
+        "zig"
+      ];
       desc = "Use 4-space indentation for select filetypes";
       callback = lib.nixvim.mkRaw ''
         function()

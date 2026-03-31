@@ -4,7 +4,10 @@
     enable = true;
 
     autoCmd = {
-      event = [ "BufReadPost" "BufWritePost" ];
+      event = [
+        "BufReadPost"
+        "BufWritePost"
+      ];
       callback = lib.nixvim.mkRaw ''
         function()
           require("lint").try_lint()
@@ -13,7 +16,10 @@
     };
 
     lintersByFt = {
-      nix = [ "deadnix" "statix" ];
+      nix = [
+        "deadnix"
+        "statix"
+      ];
       python = [ "ruff" ];
       sh = [ "shellcheck" ];
       bash = [ "shellcheck" ];

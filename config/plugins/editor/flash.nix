@@ -8,7 +8,11 @@
 
   keymaps = [
     {
-      mode = [ "n" "x" "o" ];
+      mode = [
+        "n"
+        "x"
+        "o"
+      ];
       key = "<leader>fj";
       action = "<cmd>lua require('flash').jump()<CR>";
       options = {
@@ -17,7 +21,11 @@
       };
     }
     {
-      mode = [ "n" "x" "o" ];
+      mode = [
+        "n"
+        "x"
+        "o"
+      ];
       key = "<leader>ft";
       action = "<cmd>lua require('flash').treesitter()<CR>";
       options = {

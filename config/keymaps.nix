@@ -40,7 +40,11 @@
       options.silent = true;
     }
     {
-      mode = [ "n" "i" "v" ];
+      mode = [
+        "n"
+        "i"
+        "v"
+      ];
       key = "<C-s>";
       action = "<cmd>write<CR>";
       options.silent = true;
