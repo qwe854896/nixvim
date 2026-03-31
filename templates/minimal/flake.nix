@@ -11,15 +11,23 @@
   };
 
   outputs =
-    { nixvim, ... }:
+    { nixpkgs, nixvim, ... }:
     let
-      system = "x86_64-linux";
-      nvim = nixvim.legacyPackages.${system}.makeNixvimWithModule {
-        inherit system;
-        module = import ./config;
-      };
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+        "x86_64-darwin"
+        "aarch64-darwin"
+      ];
+      forAllSystems = nixpkgs.lib.genAttrs systems;
+      packages = forAllSystems (system: {
+        default = nixvim.legacyPackages.${system}.makeNixvimWithModule {
+          inherit system;
+          module = import ./config;
+        };
+      });
     in
     {
-      packages.${system}.default = nvim;
+      inherit packages;
     };
 }

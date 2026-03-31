@@ -1,4 +1,5 @@
-_: {
+{ pkgs, ... }:
+{
   globals = {
     mapleader = " ";
     maplocalleader = ",";
@@ -34,8 +35,9 @@ _: {
   clipboard = {
     register = "unnamedplus";
     providers = {
-      "wl-copy".enable = true;
-      xclip.enable = true;
+      "wl-copy".enable = pkgs.stdenv.hostPlatform.isLinux;
+      xclip.enable = pkgs.stdenv.hostPlatform.isLinux;
+      pbcopy.enable = pkgs.stdenv.hostPlatform.isDarwin;
     };
   };
 }
