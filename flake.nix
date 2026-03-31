@@ -12,11 +12,13 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
   };
 
-  outputs = inputs@{ flake-parts, nixvim, ... }:
+  outputs =
+    inputs@{ flake-parts, nixvim, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "x86_64-linux" ];
 
-      perSystem = { system, ... }:
+      perSystem =
+        { pkgs, system, ... }:
         let
           nixvimLib = nixvim.lib.${system};
           nixvimModule = {
@@ -26,6 +28,14 @@
           nvim = nixvim.legacyPackages.${system}.makeNixvimWithModule nixvimModule;
         in
         {
+          formatter = pkgs.nixfmt-tree;
+          devShells.default = pkgs.mkShell {
+            packages = with pkgs; [
+              nixfmt-tree
+              statix
+              deadnix
+            ];
+          };
           packages.default = nvim;
           checks.default = nixvimLib.check.mkTestDerivationFromNixvimModule nixvimModule;
         };
