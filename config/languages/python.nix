@@ -4,5 +4,6 @@
     ruff
   ];
 
-  plugins.lsp.servers.basedpyright.enable = true;
+  plugins.lsp.servers.ty.enable = true;
+  plugins.lsp.servers.ruff.enable = true;
 }

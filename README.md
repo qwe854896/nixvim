@@ -42,7 +42,7 @@ nix run github:qwe854896/nixvim
 | C/C++ | clangd | clang-format | -- |
 | Zig | zls | zig fmt | -- |
 | Haskell | hls | ormolu | -- |
-| Python | basedpyright | ruff | ruff |
+| Python | ty + ruff | ruff | ruff |
 | Shell | bashls | shfmt | shellcheck |
 | Lua | lua_ls | stylua | -- |
 | JSON | jsonls | -- | -- |
