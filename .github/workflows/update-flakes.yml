@@ -2,7 +2,7 @@ name: Update Flakes
 
 on:
   schedule:
-    - cron: '0 0 * * 1'
+    - cron: "17 19 * * 1"
   workflow_dispatch:
 
 concurrency:
@@ -33,6 +33,6 @@ jobs:
           token: ${{ secrets.REPO_TOKEN }}
           add-paths: flake.lock
           branch: chore/update-flake-inputs
-          commit-message: 'chore: update flake inputs'
-          title: 'chore: update flake inputs'
+          commit-message: "chore: update flake inputs"
+          title: "chore: update flake inputs"
           assignees: qwe854896
